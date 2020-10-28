@@ -1,0 +1,215 @@
+﻿@model PagedList.IPagedList<Models.EF.CategoryModel>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section jsFooter{
+    <script src="/Assets/Admin/js/controller/categoryController.js"></script>
+    <script src="/Assets/Admin/vendor/jquery-ui.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#txtCreator").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: '@Url.Action("GetCreatorByUserName", "Category")',
+                        dataType: "json",
+                        data: { UserName: $("#txtCreator").val() },
+                        type: "POST",
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return item
+                            }))
+                        }
+                    })
+                },
+                minLength:1
+            });
+        });
+    </script>
+}
+<!-- BREADCRUMB-->
+<section class="au-breadcrumb m-t-75">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="au-breadcrumb-content">
+                        <div class="au-breadcrumb-left">
+                            <ul class="list-unstyled list-inline au-breadcrumb__list">
+                                <li class="list-inline-item active">
+                                    <a href="#">Home</a>
+                                </li>
+                                <li class="list-inline-item seprate">
+                                    <span>/</span>
+                                </li>
+                                <li class="list-inline-item">Category</li>
+                                <li class="list-inline-item seprate">
+                                    <span>/</span>
+                                </li>
+                                <li class="list-inline-item">List All</li>
+                            </ul>
+                        </div>
+                        <a href="/Admin/Category/Create" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                            <i class="zmdi zmdi-plus"></i>add new category
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END BREADCRUMB-->
+<!-- STATISTIC-->
+<section class="statistic">
+    <div class="section__content section__content--p15">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card text-dark">
+                        <div class="card-header">
+                            <i class="fa fa-user"></i><strong class="card-title pl-2">Profile Card</strong>
+                        </div>
+                        <div class="card-body">
+                            <!-- DATA TABLE -->
+                            @if (!(ViewBag.DeleteCategorySuccessMessage == null))
+                            {
+                                <div class="alert alert-success" role="alert">
+                                    @ViewBag.DeleteCategorySuccessMessage
+                                </div>
+                            }
+                            else if (!(ViewBag.DeleteCategoryErrorMessage == null))
+                            {
+                                <div class="alert alert-danger" role="alert">
+                                    @ViewBag.DeleteCategoryErrorMessage
+                                </div>
+                            }
+                            <div class="table-data__tool">
+                                <div class="table-data__tool-left">
+                                    <div class="rs-select2--light">
+                                    </div>
+                                </div>
+                                <div class="table-data__tool-right">
+                                    <div class="rs-select2--light rs-select2--sm">
+                                        <ul class="totalRecord">
+                                            <li><a href="/Admin/Category?searchName=@ViewBag.SearchName&searchMetaTitle=@ViewBag.SearchMetaTitle&searchDateFrom=@ViewBag.SearchDateFrom&searchDateTo=@ViewBag.SearchDateTo&Creator=@ViewBag.SearchCreator&searchStatus=@ViewBag.SearchStatus&pageSize=10">10</a></li>
+                                            <li><a href="/Admin/Category?searchName=@ViewBag.SearchName&searchMetaTitle=@ViewBag.SearchMetaTitle&searchDateFrom=@ViewBag.SearchDateFrom&searchDateTo=@ViewBag.SearchDateTo&Creator=@ViewBag.SearchCreator&searchStatus=@ViewBag.SearchStatus&pageSize=20">20</a></li>
+                                            <li><a href="/Admin/Category?searchName=@ViewBag.SearchName&searchMetaTitle=@ViewBag.SearchMetaTitle&searchDateFrom=@ViewBag.SearchDateFrom&searchDateTo=@ViewBag.SearchDateTo&Creator=@ViewBag.SearchCreator&searchStatus=@ViewBag.SearchStatus&pageSize=50">50</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive table-data">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <td>
+                                                <a>
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                            </td>
+                                            <td>Name</td>
+                                            <td>Meta Title</td>
+                                            <td>Created Date</td>
+                                            <td style="width:150px;">Creator</td>
+                                            <td>Status</td>
+                                            <td></td>
+                                        </tr>                                       
+                                        <tr>
+                                            <td>
+                                                <label class="au-checkbox">
+                                                    <input type="checkbox">
+                                                    <span class="au-checkmark"></span>
+                                                </label>
+                                            </td>
+                                            @using (Html.BeginForm("Index", "Category", FormMethod.Get, new { @class = "form-inline" }))
+                                            {
+                                                <td><input type="text" name="searchName" placeholder="Name" class="form-control" value="@ViewBag.SearchName"></td>
+                                                <td><input type="text" name="searchMetaTitle" placeholder="Meta Title" class="form-control" value="@ViewBag.SearchMetaTitle"></td>
+                                                <td>
+                                                    <div class="form-row align-items-center">
+                                                        <div class="col-sm-6">
+                                                            <input type="date" name="searchDateFrom" class="form-control" value="@ViewBag.SearchDateFrom">
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <input type="date" name="searchDateTo" class="form-control" value="@ViewBag.SearchDateTo">
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td><input type="text" name="Creator" id="txtCreator" class="form-control" placeholder="Creator" value="@ViewBag.SearchCreator"></td>
+                                                <td>
+                                                    <select name="searchStatus" class="form-control">
+                                                        <option value="">Select</option>
+                                                        <option value="1" @{ if (!(ViewBag.SearchStatus == null)) {
+                                                                if (Int32.Parse(ViewBag.SearchStatus) == 1) {
+                                                                                        @Html.Raw("selected")
+                                                                }
+                                                            } }>
+                                                                                          Processing
+                                                          </option>
+                                                          <option value="0" @{ if (!(ViewBag.SearchStatus == null)) { if (Int32.Parse(ViewBag.SearchStatus) == 0) {@Html.Raw("selected")} } }>
+Denied
+</option>
+
+
+</select>
+
+
+
+
+</td>
+
+
+
+<td><button type="submit" class="btn btn-light btn-block"><i class="fas fa-search"></i> Search</button></td>
+                                                    }
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                        @foreach (var item in Model)
+                                                        {
+                                                            <tr id="row_@item.Id">
+                                                                <td>
+                                                                    <label class="au-checkbox">
+                                                                        <input type="checkbox">
+                                                                        <span class="au-checkmark"></span>
+                                                                    </label>
+                                                                </td>
+                                                                <td><a href="/Admin/Category/Detail/@item.Id">@item.Name</a></td>
+                                                                <td><a href="/Admin/Category/Detail/@item.Id">@item.MetaTitle</a></td>
+                                                                <td><a href="/Admin/Category/Detail/@item.Id">@(item.CreatedDate.HasValue ? item.CreatedDate.Value.ToString("MM/dd/yyyy HH:mm:ss") : "")</a></td>
+                                                                <td><a href="/Admin/Category/Detail/@item.Id">@item.Creator</a></td>
+                                                                <td><a href="/Admin/Category/Status/@item.Id" class='btn-active @(item.Status?"status--process":"status--denied")' data-id="@item.Id">@(item.Status? "Processing" : "Denied")</a></td>
+                                                                <td>
+                                                                    <div class="table-data-feature">
+                                                                        <a href="/Admin/Category/Edit/@item.Id" class="item">
+                                                                            <i class="zmdi zmdi-edit"></i>
+                                                                        </a>
+                                                                        <a class="item" data-ajax="true" data-ajax-complete="$('#row_@item.Id').remove()" data-ajax-confirm="Are you sure to change status of this category" data-ajax-method="Delete" href="/Admin/Category/Delete/@item.Id">
+                                                                            <i class="zmdi zmdi-delete"></i>
+                                                                        </a>
+                                                                        @*@Ajax.ActionLink("Delete", "Delete", new { @id = item.Id }, new AjaxOptions
+                                                    {
+                                                        Confirm = "Are you sure to change status of this category",
+                                                        OnComplete = "$('#row_" + item.Id + "').remove()",
+                                                        HttpMethod = "Delete"
+                                                    })*@
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            @*@Html.PagedListPager(Model, page => Url.Action("Index", "Search", new { page, search = Request.QueryString["search"] }))*@
+                            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchString = @ViewBag.SearchName }))
+                            <!-- END DATA TABLE -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END STATISTIC-->

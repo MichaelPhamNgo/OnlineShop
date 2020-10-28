@@ -1,0 +1,91 @@
+﻿@model Models.EF.TagModel
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Admin/Home">Home</a></li>
+        <li class="breadcrumb-item"><a href="/Admin/Tag">Tag</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Detail</li>
+    </ol>
+</nav>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong>Detail Of A Tag</strong>
+            </div>
+            <div class="card-body card-block">
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Tag ID</label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p class="form-control-static">@Model.Id</p>
+                    </div>
+                </div>                
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Tag Name</label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p class="form-control-static">@Model.Name</p>
+                    </div>
+                </div>                
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Order</label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p class="form-control-static">@Model.DisplayOrder</p>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Created Date</label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p class="form-control-static">@(Model.CreatedDate.HasValue ? Model.CreatedDate.Value.ToString("MM/dd/yyyy HH:mm:ss") : string.Empty)</p>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Creator</label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p class="form-control-static">@Model.Creator</p>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Modified Date</label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p class="form-control-static">@(Model.ModifiedDate.HasValue ? Model.ModifiedDate.Value.ToString("MM/dd/yyyy HH:mm:ss") : string.Empty)</p>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Modifier</label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p class="form-control-static">@Model.Modifier</p>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Status</label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p class="form-control-static">@(Model.Status? "Processing" : "Denied")</p>
+                    </div>
+                </div>                
+            </div>
+            <div class="card-footer">
+                @Html.ActionLink("Back to tag index", "Index", "Tag")
+            </div>
+        </div>        
+    </div>
+</div>

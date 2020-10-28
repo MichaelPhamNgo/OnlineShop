@@ -1,0 +1,168 @@
+﻿@model Models.EF.CategoryModel
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<!-- BREADCRUMB-->
+<section class="au-breadcrumb m-t-75">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="au-breadcrumb-content">
+                        <div class="au-breadcrumb-left">
+                            <ul class="list-unstyled list-inline au-breadcrumb__list">
+                                <li class="list-inline-item active">
+                                    <a href="#">Home</a>
+                                </li>
+                                <li class="list-inline-item seprate">
+                                    <span>/</span>
+                                </li>
+                                <li class="list-inline-item">Category</li>
+                                <li class="list-inline-item seprate">
+                                    <span>/</span>
+                                </li>
+                                <li class="list-inline-item">Detail</li>
+                            </ul>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END BREADCRUMB-->
+<section class="statistic">
+    <div class="section__content section__content--p15">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Detail Of A Category</strong>
+                        </div>
+                        <div class="card-body card-block">
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label class=" form-control-label">Category ID</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <p class="form-control-static">@Model.Id</p>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label class=" form-control-label">SEO Title</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <p class="form-control-static">@Model.SeoTitle</p>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label class=" form-control-label">Category Name</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <p class="form-control-static">@Model.Name</p>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label class=" form-control-label">Meta Keywords</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <p class="form-control-static">@Model.MetaKeywords</p>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label class=" form-control-label">Meta Title</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <p class="form-control-static">@Model.MetaTitle</p>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label class=" form-control-label">Meta Description</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <p class="form-control-static">@Model.MetaDescription</p>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label class=" form-control-label">Its Parent</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <p class="form-control-static">@Model.CategoryParent</p>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label class=" form-control-label">Order</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <p class="form-control-static">@Model.DisplayOrder</p>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label class=" form-control-label">Created Date</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <p class="form-control-static">@(Model.CreatedDate.HasValue ? Model.CreatedDate.Value.ToString("MM/dd/yyyy HH:mm:ss") : string.Empty)</p>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label class=" form-control-label">Creator</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <p class="form-control-static">@Model.Creator</p>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label class=" form-control-label">Modified Date</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <p class="form-control-static">@(Model.ModifiedDate.HasValue ? Model.ModifiedDate.Value.ToString("MM/dd/yyyy HH:mm:ss") : string.Empty)</p>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label class=" form-control-label">Modifier</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <p class="form-control-static">@Model.Modifier</p>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label class=" form-control-label">Status</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <p class="form-control-static">@(Model.Status? "Processing" : "Denied")</p>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label class=" form-control-label">Show On Home</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <p class="form-control-static">@(Model.ShowOnHome.HasValue == true ? "Yes" : "No")</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            @Html.ActionLink("Back to category index", "Index", "Category")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END STATISTIC-->

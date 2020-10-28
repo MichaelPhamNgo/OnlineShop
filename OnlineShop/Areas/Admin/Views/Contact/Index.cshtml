@@ -1,0 +1,106 @@
+﻿@model PagedList.IPagedList<Models.EF.Contact>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section jsFooter{
+    <script src="/Assets/Admin/js/controller/contactController.js"></script>
+}
+
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Admin/Home">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Contact</li>
+    </ol>
+</nav>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4>List of Contact</h4>
+            </div>
+            <div class="card-body">
+                <!-- DATA TABLE -->
+                @if (!(ViewBag.ErrorMessage == null))
+                {
+                    <div class="alert alert-danger" role="alert">
+                        @ViewBag.ErrorMessage
+                    </div>
+                }
+                <div class="table-data__tool">
+                    <div class="table-data__tool-left">
+                        <a href="/Admin/Contact/Create" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                            <i class="zmdi zmdi-plus"></i>add new contact
+                        </a>
+                    </div>                    
+                </div>
+                <div class="table-data__tool">
+                    <div class="table-data__tool-left">
+                        <div class="rs-select2--light">
+                            @using (Html.BeginForm("Index", "Contact", FormMethod.Get, new { @class = "form-inline" }))
+                            {
+                                <input class="form-control mr-sm-2" name="searchString" type="search" placeholder="Tag Name" value="@ViewBag.SearchName">
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                            }                            
+                        </div>
+                    </div>
+                    <div class="table-data__tool-right">
+                        <div class="rs-select2--light rs-select2--sm">
+                            <select class="js-select2" name="property">
+                                <option value="10" selected="selected">&nbsp;&nbsp;&nbsp;&nbsp;- 10 -</option>
+                                <option value="20">&nbsp;&nbsp;&nbsp;&nbsp;- 20 -</option>
+                                <option value="50">&nbsp;&nbsp;&nbsp;&nbsp;- 50 -</option>
+                            </select>
+                            <div class="dropDownSelect2"></div>
+                        </div>
+                    </div>
+                </div>                
+                <div class="table-responsive table-data">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <td>ID</td>
+                                <td>Contact Detail</td>                                                                
+                                <td>Status</td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr id="row_@item.Id">
+                                    <td><a href="/Admin/Tag/Detail/@item.Id">@item.Id</a></td>
+                                    <td><a href="/Admin/Tag/Detail/@item.Id">@item.Detail</a></td>                                                                        
+                                    <td><a href="/Admin/Tag/Status/@item.Id" class='btn-active @(item.Status?"status--process":"status--denied")' data-id="@item.Id">@(item.Status? "Processing" : "Denied")</a></td>
+                                    <td>
+                                        <div class="table-data-feature">
+                                            <a href="/Admin/Tag/Edit/@item.Id" class="item">
+                                                <i class="zmdi zmdi-edit"></i>
+                                            </a>
+                                            <a class="item" data-ajax="true" data-ajax-complete="$('#row_@item.Id').remove()" data-ajax-confirm="Are you sure to change status of this category" data-ajax-method="Delete" href="/Admin/Tag/Delete/@item.Id">
+                                                <i class="zmdi zmdi-delete"></i>
+                                            </a>
+                                            @*@Ajax.ActionLink("Delete", "Delete", new { @id = item.Id }, new AjaxOptions
+                                    {
+                                       Confirm = "Are you sure to change status of this category",
+                                       OnComplete = "$('#row_" + item.Id + "').remove()",
+                                       HttpMethod = "Delete"
+                                    })*@
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                @*@Html.PagedListPager(Model, page => Url.Action("Index", "Search", new { page, search = Request.QueryString["search"] }))*@
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchString = @ViewBag.SearchName }))
+                <!-- END DATA TABLE -->
+            </div>
+        </div>
+    </div>
+</div>
+
