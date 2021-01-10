@@ -1,5 +1,4 @@
 ﻿using Models.EF;
-using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -69,8 +68,9 @@ namespace Models.Dao
         }
 
         public IEnumerable<Contact> ListAllPaging(string searchString, int Page, int PageSize)
-        {            
-            return db.Contacts.OrderByDescending(x=>x.Id).ToPagedList(Page, PageSize);
+        {
+            //return db.Contacts.OrderByDescending(x=>x.Id).ToPagedList(Page, PageSize);
+            return null;
         }
 
         public List<Contact> ListAll()

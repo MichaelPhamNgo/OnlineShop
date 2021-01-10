@@ -2,24 +2,27 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace DBGeneration.Entities
 {
-    [Table("Tag")]
-    public class Tag
+    [Table("AdvertisementPosition")]
+    public class AdvertisementPosition
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { set; get; }
-                
-        [Required]
-        [StringLength(50)]        
-        public string Name { set; get; }
-                
-        [StringLength(50)]        
-        public string Type { set; get; }
 
-        public virtual ICollection<ProductTag> ProductTags { set; get; }
-        public virtual ICollection<BlogTag> BlogTags { set; get; }
+        [ForeignKey("Page")]
+        public long PageId { set; get; }
+
+        [Required]
+        [MaxLength(250)]
+        public string Name { set; get; }
+
+        public virtual Page Page { set; get; }
+        public virtual ICollection<Advertisement> Advertisements { set; get; }
     }
 }

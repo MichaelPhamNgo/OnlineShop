@@ -12,16 +12,28 @@ namespace DBGeneration.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { set; get; }
-        public string Image { set; get; }
+
+        [Required]
+        [MaxLength(256)]
+        public string Name { set; get; }
+                
+        [MaxLength(256)]
         public string Description { set; get; }
-        public string Sale { set; get; }
-        public int? UpTo { set; get; }
-        public int? DisplayOrder { set; get; }
-        public string Link { set; get; }
-        public DateTime? CreatedDate { set; get; }
-        public long? CreatedBy { set; get; }
-        public DateTime? ModifiedDate { set; get; }
-        public long? ModifiedBy { set; get; }
+
+        [MaxLength(256)]
+        public string Image { set; get; }
+
+        [MaxLength(256)]
+        public string Url { set; get; }
+
+        public int? SortOrder { set; get; }
+                
         public Status Status { set; get; }
+
+        [Column(TypeName = "text")]
+        public string Content { set; get; }
+                
+        [MaxLength(25)]
+        public string GroupAlias { set; get; }
     }
 }

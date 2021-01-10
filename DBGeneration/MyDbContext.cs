@@ -11,49 +11,42 @@ namespace DBGeneration
         {
             
         }
-        public DbSet<Credential> Credentials { get; set; }
-        public DbSet<Role> Roles { get; set; }
-        public DbSet<UserGroup> UserGroups { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<Tag> Tags { get; set; }
-        public DbSet<SystemConfig> SystemConfigs { get; set; }
-        public DbSet<State> States { get; set; }
-        public DbSet<Slide> Slides { get; set; }
-        public DbSet<ProductCategory> ProductCategories { get; set; }
-        public DbSet<Product> Products { get; set; }
-        public DbSet<Permission> Permissions { get; set; }
-        public DbSet<MenuType> MenuTypes { get; set; }
-        public DbSet<Menu> Menus { get; set; }
-        public DbSet<Function> Functions { get; set; }
-        public DbSet<Footer> Footers { get; set; }
-        public DbSet<Feedback> Feedbacks { get; set; }
-        public DbSet<ContentTag> ContentTags { get; set; }
-        public DbSet<Content> Contents { get; set; }
+
+        public DbSet<Advertisement> Advertisements { get; set; }
+        public DbSet<AdvertisementPage> AdvertisementPages { get; set; }
+        public DbSet<AdvertisementPosition> AdvertisementPositions { get; set; }
+        public DbSet<Announcement> Announcements { get; set; }
+        public DbSet<AnnouncementUser> AnnouncementUsers { get; set; }
+        public DbSet<Bill> Bills { get; set; }
+        public DbSet<BillDetail> BillDetails { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
+        public DbSet<BlogTag> BlogTags { get; set; }
+        public DbSet<Color> Colors { get; set; }
         public DbSet<Contact> Contacts { get; set; }
-        public DbSet<Category> Categories { get; set; }
-        public DbSet<Action> Actions { get; set; }
+        public DbSet<Credential> Credentials { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Feedback> Feedbacks { get; set; }        
+        public DbSet<Footer> Footers { get; set; }
+        public DbSet<Function> Functions { get; set; }
+        public DbSet<Language> Languages { get; set; }
+        public DbSet<Page> Pages { get; set; }        
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductCategory> ProductCategories { get; set; }
+        public DbSet<ProductImage> ProductImages { get; set; }
+        public DbSet<ProductQuantity> ProductQuantities { get; set; }
+        public DbSet<ProductTag> ProductTags { get; set; }        
+        public DbSet<Size> Sizes { get; set; }
+        public DbSet<Slide> Slides { get; set; }        
+        public DbSet<SystemConfig> SystemConfigs { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<UserGroup> UserGroups { get; set; }
+        public DbSet<WholePrice> WholePrices { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Configurations.Add(new AboutConfigurations());
-            modelBuilder.Configurations.Add(new ActionConfigurations());
-            modelBuilder.Configurations.Add(new CategoryConfigurations());
-            modelBuilder.Configurations.Add(new ContactConfigurations());
-            modelBuilder.Configurations.Add(new ContentConfigurations());
-            modelBuilder.Configurations.Add(new FeedbackConfigurations());
-            modelBuilder.Configurations.Add(new FooterConfigurations());
-            modelBuilder.Configurations.Add(new FunctionConfigurations());
-            modelBuilder.Configurations.Add(new MenuConfigurations());
-            modelBuilder.Configurations.Add(new ProductConfigurations());
-            modelBuilder.Configurations.Add(new ProductCategoryConfigurations());
-            modelBuilder.Configurations.Add(new SlideConfigurations());
-            modelBuilder.Configurations.Add(new StateConfigurations());
-            modelBuilder.Configurations.Add(new SystemConfigConfigurations());
-            modelBuilder.Configurations.Add(new TagConfigurations());
-            modelBuilder.Configurations.Add(new UserConfigurations());
-            modelBuilder.Configurations.Add(new UserGroupConfigurations());
-            modelBuilder.Configurations.Add(new RoleConfigurations());
-            modelBuilder.Configurations.Add(new CredentialConfigurations());
+            
         }
     }
 }

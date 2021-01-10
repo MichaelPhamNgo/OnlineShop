@@ -1,11 +1,14 @@
 ﻿using DBGeneration.Enums;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+
 namespace DBGeneration.Entities
 {
-    [Table("Function")]
-    public class Function
+    [Table("Page")]
+    public class Page
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -17,18 +20,13 @@ namespace DBGeneration.Entities
 
         [Required]
         [MaxLength(256)]
-        public string URL { set; get; }
-                
-        public long? ParentId { set; get; }
+        public string Alias { set; get; }
 
-        [MaxLength(256)]
-        public string IconCss { set; get; }
+        [MaxLength(2000)]
+        public string Content { set; get; }
 
-        [Required]
-        [Range(0, int.MaxValue)]
-        public int? SortOrder { set; get; }
-
-        [Required]
         public Status Status { set; get; }
+
+        public virtual ICollection<AdvertisementPosition> AdvertisementPositions { set; get; }
     }
 }

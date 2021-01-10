@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PagedList;
 using System.Globalization;
 
 namespace Models.Dao
@@ -114,54 +113,55 @@ namespace Models.Dao
                                                             string searchDateFrom, string searchDateTo,
                                                                 string searchCreator, string searchStatus, 
                                                                     int Page, int PageSize)
-        {            
-            var sql = from cat in db.Categories
-                            join user in db.Users
-                            on cat.CreatedBy equals user.Id
-                          select new CategoryModel
-                          {
-                              Id = cat.Id,
-                              Name = cat.Name,
-                              MetaTitle = cat.MetaTitle,
-                              MetaKeywords = cat.MetaKeywords,
-                              SeoTitle = cat.SeoTitle,
-                              CreatedDate = cat.CreatedDate,
-                              Creator = user.UserName,
-                              Status = cat.Status
-                          };
-            if (!string.IsNullOrEmpty(searchName))
-                sql = sql.Where(c => c.Name.Contains(searchName));          
+        {
+            return null;
+            //var sql = from cat in db.Categories
+            //                join user in db.Users
+            //                on cat.CreatedBy equals user.Id
+            //              select new CategoryModel
+            //              {
+            //                  Id = cat.Id,
+            //                  Name = cat.Name,
+            //                  MetaTitle = cat.MetaTitle,
+            //                  MetaKeywords = cat.MetaKeywords,
+            //                  SeoTitle = cat.SeoTitle,
+            //                  CreatedDate = cat.CreatedDate,
+            //                  Creator = user.UserName,
+            //                  Status = cat.Status
+            //              };
+            //if (!string.IsNullOrEmpty(searchName))
+            //    sql = sql.Where(c => c.Name.Contains(searchName));          
 
-            if (!string.IsNullOrEmpty(searchMetaTitle))
-                sql = sql.Where(c => c.MetaTitle.Contains(searchMetaTitle));
+            //if (!string.IsNullOrEmpty(searchMetaTitle))
+            //    sql = sql.Where(c => c.MetaTitle.Contains(searchMetaTitle));
             
-            if (!string.IsNullOrEmpty(searchDateFrom))
-            {
-                var dateFrom = DateTime.Parse(searchDateFrom);
-                sql = sql.Where(c => DateTime.Compare(dateFrom, c.CreatedDate.Value) <= 0);
-            }                
+            //if (!string.IsNullOrEmpty(searchDateFrom))
+            //{
+            //    var dateFrom = DateTime.Parse(searchDateFrom);
+            //    sql = sql.Where(c => DateTime.Compare(dateFrom, c.CreatedDate.Value) <= 0);
+            //}                
 
-            if (!string.IsNullOrEmpty(searchDateTo))
-            {
-                var dateTo = DateTime.Parse(searchDateTo);
-                sql = sql.Where(c => DateTime.Compare(dateTo, c.CreatedDate.Value) >= 0);
-            }                
+            //if (!string.IsNullOrEmpty(searchDateTo))
+            //{
+            //    var dateTo = DateTime.Parse(searchDateTo);
+            //    sql = sql.Where(c => DateTime.Compare(dateTo, c.CreatedDate.Value) >= 0);
+            //}                
 
-            if (!string.IsNullOrEmpty(searchStatus))
-            {
-                var status = false;
-                if(int.Parse(searchStatus) == 1)
-                {
-                    status = true;
-                } else
-                {
-                    status = false;
-                }
-                sql = sql.Where(p => p.Status == status);
-            }
+            //if (!string.IsNullOrEmpty(searchStatus))
+            //{
+            //    var status = false;
+            //    if(int.Parse(searchStatus) == 1)
+            //    {
+            //        status = true;
+            //    } else
+            //    {
+            //        status = false;
+            //    }
+            //    sql = sql.Where(p => p.Status == status);
+            //}
                 
 
-            return sql.OrderByDescending(x => x.CreatedDate).ToPagedList(Page, PageSize);            
+            //return sql.OrderByDescending(x => x.CreatedDate).ToPagedList(Page, PageSize);            
         }
 
         

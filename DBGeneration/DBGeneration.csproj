@@ -67,51 +67,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configurations\AboutConfigurations.cs" />
-    <Compile Include="Configurations\ActionConfigurations.cs" />
-    <Compile Include="Configurations\CategoryConfigurations.cs" />
-    <Compile Include="Configurations\ContactConfigurations.cs" />
-    <Compile Include="Configurations\ContentConfigurations.cs" />
-    <Compile Include="Configurations\CredentialConfigurations.cs" />
-    <Compile Include="Configurations\FeedbackConfigurations.cs" />
-    <Compile Include="Configurations\FooterConfigurations.cs" />
-    <Compile Include="Configurations\FunctionConfigurations.cs" />
-    <Compile Include="Configurations\MenuConfigurations.cs" />
-    <Compile Include="Configurations\ProductCategoryConfigurations.cs" />
-    <Compile Include="Configurations\ProductConfigurations.cs" />
-    <Compile Include="Configurations\RoleConfigurations.cs" />
-    <Compile Include="Configurations\SlideConfigurations.cs" />
-    <Compile Include="Configurations\StateConfigurations.cs" />
-    <Compile Include="Configurations\SystemConfigConfigurations.cs" />
-    <Compile Include="Configurations\TagConfigurations.cs" />
-    <Compile Include="Configurations\UserConfigurations.cs" />
-    <Compile Include="Configurations\UserGroupConfigurations.cs" />
-    <Compile Include="Entities\About.cs" />
-    <Compile Include="Entities\Action.cs" />
-    <Compile Include="Entities\Category.cs" />
+    <Compile Include="Entities\Advertisement.cs" />
+    <Compile Include="Entities\AdvertisementPage.cs" />
+    <Compile Include="Entities\AdvertisementPosition.cs" />
+    <Compile Include="Entities\Announcement.cs" />
+    <Compile Include="Entities\AnnouncementUser.cs" />
+    <Compile Include="Entities\Bill.cs" />
+    <Compile Include="Entities\BillDetail.cs" />
+    <Compile Include="Entities\Blog.cs" />
+    <Compile Include="Entities\BlogTag.cs" />
+    <Compile Include="Entities\Color.cs" />
     <Compile Include="Entities\Contact.cs" />
-    <Compile Include="Entities\Content.cs" />
-    <Compile Include="Entities\ContentTag.cs" />
     <Compile Include="Entities\Credential.cs" />
+    <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\Feedback.cs" />
     <Compile Include="Entities\Footer.cs" />
     <Compile Include="Entities\Function.cs" />
-    <Compile Include="Entities\Menu.cs" />
-    <Compile Include="Entities\MenuType.cs" />
-    <Compile Include="Entities\Permission.cs" />
+    <Compile Include="Entities\Language.cs" />
+    <Compile Include="Entities\Page.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\ProductCategory.cs" />
+    <Compile Include="Entities\ProductImage.cs" />
+    <Compile Include="Entities\ProductQuantity.cs" />
+    <Compile Include="Entities\ProductTag.cs" />
     <Compile Include="Entities\Role.cs" />
+    <Compile Include="Entities\Size.cs" />
     <Compile Include="Entities\Slide.cs" />
-    <Compile Include="Entities\State.cs" />
     <Compile Include="Entities\SystemConfig.cs" />
     <Compile Include="Entities\Tag.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\UserGroup.cs" />
+    <Compile Include="Entities\WholePrice.cs" />
     <Compile Include="Enums\Status.cs" />
-    <Compile Include="Migrations\202101080933069_Initial.cs" />
-    <Compile Include="Migrations\202101080933069_Initial.designer.cs">
-      <DependentUpon>202101080933069_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\202101100403514_initial.cs" />
+    <Compile Include="Migrations\202101100403514_initial.designer.cs">
+      <DependentUpon>202101100403514_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MyDbContext.cs" />
@@ -123,8 +113,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202101080933069_Initial.resx">
-      <DependentUpon>202101080933069_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202101100403514_initial.resx">
+      <DependentUpon>202101100403514_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

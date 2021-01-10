@@ -2,24 +2,27 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace DBGeneration.Entities
 {
-    [Table("Tag")]
-    public class Tag
+    [Table("Color")]
+    public class Color
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { set; get; }
-                
-        [Required]
-        [StringLength(50)]        
-        public string Name { set; get; }
-                
-        [StringLength(50)]        
-        public string Type { set; get; }
 
-        public virtual ICollection<ProductTag> ProductTags { set; get; }
-        public virtual ICollection<BlogTag> BlogTags { set; get; }
+        [Required]
+        [MaxLength(256)]
+        public string Name { set; get; }
+
+        [MaxLength(256)]
+        public string Code { set; get; }
+
+        public virtual ICollection<ProductQuantity> ProductQuantities { set; get; }
+        public virtual ICollection<BillDetail> BillDetails { set; get; }
     }
 }

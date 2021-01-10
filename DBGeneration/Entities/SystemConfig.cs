@@ -10,12 +10,21 @@ namespace DBGeneration.Entities
     public class SystemConfig
     {
         [Key]
-        [StringLength(50)]
-        [DataType("varchar")]
+        [StringLength(255)]
+        [Column(TypeName = "varchar")]
         public string Id { set; get; }
-        public string SystemConfigName { set; get; }
-        public string Type { set; get; }
-        public string Value { set; get; }
+
+        [StringLength(128)]
+        [Column(TypeName = "varchar")]
+        public string Name { set; get; }
+                
+        [Column(TypeName = "text")]
+        public string Value1 { set; get; }                
+        public int Value2 { set; get; }
+        public bool Value3 { set; get; }
+        public DateTime Value4 { set; get; }
+        [DataType("decimal(18, 2)")]
+        public decimal Value5 { set; get; }
         public Status Status { set; get; }
     }
 }
