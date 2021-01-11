@@ -1,11 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6D18E544-4F57-4899-84E5-96A675CC83A9}</ProjectGuid>
+    <ProjectGuid>{7214E7A4-6FF0-428F-95CA-0D25130B5E3E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Models</RootNamespace>
@@ -13,8 +12,6 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,37 +32,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
-    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -74,41 +48,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dao\CategoryDao.cs" />
-    <Compile Include="Dao\ContactDao.cs" />
-    <Compile Include="Dao\TagDao.cs" />
-    <Compile Include="Dao\UserDao.cs" />
-    <Compile Include="EF\About.cs" />
-    <Compile Include="EF\Category.cs" />
-    <Compile Include="EF\CategoryModel.cs" />
-    <Compile Include="EF\Contact.cs" />
-    <Compile Include="EF\Content.cs" />
-    <Compile Include="EF\ContentTag.cs" />
-    <Compile Include="EF\Feedback.cs" />
-    <Compile Include="EF\Footer.cs" />
-    <Compile Include="EF\Menu.cs" />
-    <Compile Include="EF\MenuType.cs" />
-    <Compile Include="EF\OnlineShopDbContext.cs" />
-    <Compile Include="EF\Product.cs" />
-    <Compile Include="EF\ProductCategory.cs" />
-    <Compile Include="EF\Slide.cs" />
-    <Compile Include="EF\SystemConfig.cs" />
-    <Compile Include="EF\Tag.cs" />
-    <Compile Include="EF\TagModel.cs" />
-    <Compile Include="EF\User.cs" />
+    <Compile Include="Entities\Advertisement.cs" />
+    <Compile Include="Entities\AdvertisementPage.cs" />
+    <Compile Include="Entities\AdvertisementPosition.cs" />
+    <Compile Include="Entities\Announcement.cs" />
+    <Compile Include="Entities\AnnouncementUser.cs" />
+    <Compile Include="Entities\Bill.cs" />
+    <Compile Include="Entities\BillDetail.cs" />
+    <Compile Include="Entities\Blog.cs" />
+    <Compile Include="Entities\BlogTag.cs" />
+    <Compile Include="Entities\Color.cs" />
+    <Compile Include="Entities\Contact.cs" />
+    <Compile Include="Entities\Credential.cs" />
+    <Compile Include="Entities\Customer.cs" />
+    <Compile Include="Entities\Feedback.cs" />
+    <Compile Include="Entities\Footer.cs" />
+    <Compile Include="Entities\Function.cs" />
+    <Compile Include="Entities\Language.cs" />
+    <Compile Include="Entities\Page.cs" />
+    <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\ProductCategory.cs" />
+    <Compile Include="Entities\ProductImage.cs" />
+    <Compile Include="Entities\ProductQuantity.cs" />
+    <Compile Include="Entities\ProductTag.cs" />
+    <Compile Include="Entities\Role.cs" />
+    <Compile Include="Entities\Size.cs" />
+    <Compile Include="Entities\Slide.cs" />
+    <Compile Include="Entities\SystemConfig.cs" />
+    <Compile Include="Entities\Tag.cs" />
+    <Compile Include="Entities\User.cs" />
+    <Compile Include="Entities\UserGroup.cs" />
+    <Compile Include="Entities\WholePrice.cs" />
+    <Compile Include="Enums\Status.cs" />
+    <Compile Include="MyDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Dao\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
-  </Target>
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
 </Project>

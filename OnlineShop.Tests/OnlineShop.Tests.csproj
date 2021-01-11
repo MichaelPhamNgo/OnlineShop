@@ -6,7 +6,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{4833146C-46F2-4E37-8A90-DDAFEEA4A83E}</ProjectGuid>
+    <ProjectGuid>{80E0DD00-B3C1-4687-A509-83C6411A4F4F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>OnlineShop.Tests</RootNamespace>
@@ -100,7 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OnlineShop\OnlineShop.csproj">
-      <Project>{924BF0E5-891D-47EF-BFF2-56D4DEA1B0DF}</Project>
+      <Project>{411B9843-4B57-4B0B-88D4-BE4D59653C12}</Project>
       <Name>OnlineShop</Name>
     </ProjectReference>
   </ItemGroup>
