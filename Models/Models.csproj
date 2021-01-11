@@ -48,6 +48,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\PagedResult.cs" />
+    <Compile Include="Common\PagedResultBase.cs" />
+    <Compile Include="Dao\SizeDao.cs" />
+    <Compile Include="Dao\TagDao.cs" />
+    <Compile Include="Dao\UserDao.cs" />
     <Compile Include="Entities\Advertisement.cs" />
     <Compile Include="Entities\AdvertisementPage.cs" />
     <Compile Include="Entities\AdvertisementPosition.cs" />
@@ -82,13 +87,13 @@
     <Compile Include="Enums\Status.cs" />
     <Compile Include="MyDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Dao\" />
+    <Compile Include="ViewModels\SizeViewModel.cs" />
+    <Compile Include="ViewModels\TagModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
